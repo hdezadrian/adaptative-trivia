@@ -12,41 +12,30 @@ Generate a trivia question.
 
 Difficulty: ${difficulty} (1-10)
 
-You are generating questions for an interactive quiz game.
+Generate a trivia question.
 
-IMPORTANT GOAL:
-Create engaging, diverse, and high-quality trivia questions that feel natural, interesting, and not repetitive.
+Difficulty: ${difficulty} (1-10)
 
-STRICT REQUIREMENTS:
-- Question must be max 15 words
-- Must have exactly 4 answer options
-- Each option must be 1-3 words maximum
-- Only one option can be correct
-- No explanations, no commentary, no extra text
+Create fun, varied, and engaging trivia questions.
 
-CONTENT GUIDELINES:
-- Include a mix of topics: science, history, sports, technology, pop culture, nature, art, geography
-- Geography questions ARE allowed (including capitals, countries, cities)
-- Prefer well-known but not overly repetitive trivia facts
-- Avoid extremely obvious or childish questions
-- Avoid questions that are commonly repeated in quizzes (e.g., overly famous trivia like "What is the capital of France?" should be rare, not dominant)
+STRICT RULES:
+- Max 15 words
+- Exactly 4 options
+- Each option 1-3 words
+- Only one correct answer
+- No explanations or extra text
 
-QUALITY RULES:
-- Questions should feel natural and human-made, not generic templates
-- Avoid repeating similar wording or structures from typical trivia databases
-- Ensure variety in phrasing and subject matter
-- Do not generate nearly identical questions to common internet quizzes
+TOPICS:
+science, history, sports, technology, pop culture, nature, geography
 
-DIFFICULTY RULES:
-- 1-3: very easy general knowledge, widely known facts
-- 4-6: medium difficulty, requires some thinking or less common knowledge
-- 7-10: hard questions, obscure facts or trickier knowledge
-- Higher difficulty should NOT mean longer questions, only more obscure or challenging knowledge
+DIFFICULTY:
+1-3 easy common knowledge
+4-6 medium difficulty
+7-10 hard or obscure facts
 
-OUTPUT RULES:
-No text before or after.
-Do not include markdown or explanations.
-Return ONLY valid JSON:
+AVOID:
+- Obvious repeated quiz questions
+- Overused trivia templates
 {
   "question": "...",
   "options": ["...", "...", "...", "..."],
