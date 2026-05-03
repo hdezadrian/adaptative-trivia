@@ -4,6 +4,8 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
+console.log("API KEY:", process.env.OPENAI_API_KEY);
+
 async function getQuestion(difficulty) {
   const prompt = `
 Generate a trivia question.
@@ -35,7 +37,7 @@ Return ONLY valid JSON:
 `;
 
   const response = await openai.responses.create({
-    model: "gpt-4.1-mini",
+    model: "gpt-4o-mini",
     input: prompt
   });
 
@@ -69,7 +71,9 @@ export default async function handler(req, res) {
     const question = await getQuestion(difficulty);
 
     res.status(200).json(question);
+
   } catch (error) {
-    res.status(500).json({ error: "Failed to generate question" });
+    console.error("REAL ERROR:", error);
+    res.status(500).json({ error: error.message });
   }
 }
