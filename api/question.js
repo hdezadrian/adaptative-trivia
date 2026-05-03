@@ -36,10 +36,13 @@ Return ONLY valid JSON:
 }
 `;
 
-  const response = await openai.responses.create({
-    model: "gpt-4o-mini",
-    input: prompt
-  });
+const response = await openai.responses.create({
+  model: "gpt-4o-mini",
+  input: prompt,
+  text: {
+    format: { type: "json_object" }
+  }
+});
 
   const text =
   response.output?.[0]?.content?.[0]?.text
