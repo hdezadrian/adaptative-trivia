@@ -44,28 +44,16 @@ const response = await openai.responses.create({
   }
 });
 
-  const text =
-  response.output?.[0]?.content?.[0]?.text
-  ?? response.output_text;
 
-  let data;
+const data = JSON.parse(response.output_text);
 
-  try {
-    data = JSON.parse(text.trim());
-  } catch {
-    return {
-      question: "Fallback question",
-      options: ["A", "B", "C", "D"],
-      correct: "A"
-    };
-  }
-  
-  return {
-    question: data.question || "Fallback question",
-    options: Array.isArray(data.options) ? data.options : ["A", "B", "C", "D"],
-    correct: data.correct || "A"
-  };
-  }
+return {
+  question: data.question,
+  options: data.options,
+  correct: data.correct
+};
+}
+
 
   console.log("KEY:", process.env.OPENAI_API_KEY);
 
