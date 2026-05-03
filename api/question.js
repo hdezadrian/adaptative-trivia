@@ -36,12 +36,15 @@ Return ONLY valid JSON:
 }
 `;
 
-const response = await openai.responses.create({
+const response = await openai.chat.completions.create({
   model: "gpt-4o-mini",
-  input: prompt,
-  text: {
-    format: { type: "json_object" }
-  }
+  messages: [
+    {
+      role: "user",
+      content: prompt
+    }
+  ],
+  response_format: { type: "json_object" }
 });
 
 
