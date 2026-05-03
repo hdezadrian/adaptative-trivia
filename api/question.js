@@ -64,16 +64,13 @@ Return ONLY valid JSON:
   };
   }
 
-export default async function handler(req, res) {
-  try {
-    const difficulty = Number(req.query.difficulty || 3);
+  console.log("KEY:", process.env.OPENAI_API_KEY);
 
-    const question = await getQuestion(difficulty);
-
-    res.status(200).json(question);
-
-  } catch (error) {
-    console.error("REAL ERROR:", error);
-    res.status(500).json({ error: error.message });
+  export default async function handler(req, res) {
+    console.log("API WORKS");
+  
+    return res.status(200).json({
+      ok: true,
+      key: process.env.OPENAI_API_KEY ? "exists" : "missing"
+    });
   }
-}
