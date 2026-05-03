@@ -42,7 +42,7 @@ The project is fully deployed and does not require installation.
 
 Simply open the live link:
 
-https://adaptative-trivia.vercel.app/
+https://adaptive-trivia.vercel.app/
 
 ---
 
