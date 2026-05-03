@@ -15,7 +15,7 @@ Each game session is unique because questions are generated in real time.
 
 ---
 
-#How it uses OpenAI APIs
+# How it uses OpenAI APIs
 
 This project uses the OpenAI API to generate trivia questions dynamically.
 
@@ -36,7 +36,7 @@ The AI ensures:
 
 ---
 
-#How to use
+# How to use
 
 The project is fully deployed and does not require installation.
 
@@ -68,6 +68,8 @@ AI is the core of this project because it enables:
 # Screenshots
 
 <img width="570" height="381" alt="image" src="https://github.com/user-attachments/assets/6fae43ee-372a-45a6-8b16-05f00eebcd82" />
+
+---
 
 <img width="547" height="216" alt="image" src="https://github.com/user-attachments/assets/00c53e30-5c9f-4f9a-8437-7cc54039c9e8" />
 
