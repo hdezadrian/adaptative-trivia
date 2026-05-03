@@ -4,8 +4,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-console.log("API KEY:", process.env.OPENAI_API_KEY);
-
 async function getQuestion(difficulty) {
   const prompt = `
 Generate a trivia question.
@@ -53,7 +51,7 @@ const response = await openai.chat.completions.create({
   response_format: { type: "json_object" }
 });
 
-const data = JSON.parse(response.choices[0].message.content);
+const data = response.choices[0].message.content;
 
 return {
   question: data.question,
