@@ -4,8 +4,7 @@ let state = {
     total: 0,
     difficulty: 3,
     currentQuestion: null,
-    locked: false,
-    usedQuestions: []
+    locked: false
   };
   
   // Start game
@@ -16,7 +15,6 @@ let state = {
     state.wrong = 0;
     state.total = 0;
     state.difficulty = 3;
-    state.usedQuestions = [];
   
     await nextQuestion();
   }
@@ -37,16 +35,11 @@ let state = {
   
     const question = await res.json();
 
-    if (state.usedQuestions.includes(question.question)) {
-      console.warn("Duplicate detected, retrying...");
-      return setTimeout(nextQuestion, 100);
-    }
-  
     state.currentQuestion = question;
-    state.usedQuestions.push(question.question);
-  
     state.locked = false;
+  
     renderQuestion(question);
+    
   }
   
   // Process user's answer and update state
