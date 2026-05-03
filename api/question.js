@@ -67,10 +67,15 @@ Return ONLY valid JSON:
   console.log("KEY:", process.env.OPENAI_API_KEY);
 
   export default async function handler(req, res) {
-    console.log("API WORKS");
+    try {
+      const difficulty = Number(req.query.difficulty || 3);
   
-    return res.status(200).json({
-      ok: true,
-      key: process.env.OPENAI_API_KEY ? "exists" : "missing"
-    });
+      const question = await getQuestion(difficulty);
+  
+      res.status(200).json(question);
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
   }
