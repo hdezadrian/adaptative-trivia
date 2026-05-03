@@ -51,7 +51,7 @@ const response = await openai.chat.completions.create({
   response_format: { type: "json_object" }
 });
 
-const data = response.choices[0].message.content;
+const data = JSON.parse(response.choices[0].message.content);
 
 return {
   question: data.question,
@@ -59,9 +59,6 @@ return {
   correct: data.correct
 };
 }
-
-
-  console.log("KEY:", process.env.OPENAI_API_KEY);
 
   export default async function handler(req, res) {
     try {
