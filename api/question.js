@@ -39,16 +39,12 @@ Return ONLY valid JSON:
 const response = await openai.chat.completions.create({
   model: "gpt-4o-mini",
   messages: [
-    {
-      role: "user",
-      content: prompt
-    }
+    { role: "user", content: prompt }
   ],
   response_format: { type: "json_object" }
 });
 
-
-const data = JSON.parse(response.output_text);
+const data = JSON.parse(response.choices[0].message.content);
 
 return {
   question: data.question,
