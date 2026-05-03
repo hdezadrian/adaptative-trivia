@@ -4,13 +4,20 @@ let state = {
     total: 0,
     difficulty: 3,
     currentQuestion: null,
-    locked: false
+    locked: false,
+    usedQuestions: []
   };
   
   // Start game
   startGame();
   
   async function startGame() {
+    state.correct = 0;
+    state.wrong = 0;
+    state.total = 0;
+    state.difficulty = 3;
+    state.usedQuestions = [];
+  
     await nextQuestion();
   }
   
@@ -20,22 +27,23 @@ let state = {
       endGame();
       return;
     }
-
+  
     const res = await fetch(`/api/question?difficulty=${state.difficulty}`);
-
+  
     if (!res.ok) {
-        console.error("API error");
-        return;
-      }
-
+      console.error("API error");
+      return;
+    }
+  
     const question = await res.json();
 
-    if (!question.options) {
-        console.error("Invalid question:", question);
-        return;
-      }
+    if (state.usedQuestions.includes(question.question)) {
+      console.warn("Duplicate detected, retrying...");
+      return setTimeout(nextQuestion, 100);
+    }
   
     state.currentQuestion = question;
+    state.usedQuestions.push(question.question);
   
     state.locked = false;
     renderQuestion(question);
