@@ -10,6 +10,10 @@ Generate a trivia question.
 
 Difficulty: ${difficulty} (1-10)
 
+Return ONLY valid JSON. 
+No text before or after.
+Do not include markdown or explanations.
+
 Rules:
 - Question must be max 15 words
 - 4 options
@@ -36,19 +40,27 @@ Return ONLY valid JSON:
   });
 
   const text =
-  response.output_text ||
-  response.output?.[0]?.content?.[0]?.text;
+  response.output?.[0]?.content?.[0]?.text
+  ?? response.output_text;
+
+  let data;
 
   try {
-    return JSON.parse(text);
-  } catch (e) {
+    data = JSON.parse(text.trim());
+  } catch {
     return {
       question: "Fallback question",
       options: ["A", "B", "C", "D"],
       correct: "A"
     };
   }
-}
+  
+  return {
+    question: data.question || "Fallback question",
+    options: Array.isArray(data.options) ? data.options : ["A", "B", "C", "D"],
+    correct: data.correct || "A"
+  };
+  }
 
 export default async function handler(req, res) {
   try {

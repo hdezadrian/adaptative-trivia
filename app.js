@@ -22,7 +22,18 @@ let state = {
     }
 
     const res = await fetch(`/api/question?difficulty=${state.difficulty}`);
+
+    if (!res.ok) {
+        console.error("API error");
+        return;
+      }
+
     const question = await res.json();
+
+    if (!question.options) {
+        console.error("Invalid question:", question);
+        return;
+      }
   
     state.currentQuestion = question;
   
