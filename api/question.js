@@ -12,10 +12,6 @@ Generate a trivia question.
 
 Difficulty: ${difficulty} (1-10)
 
-Generate a trivia question.
-
-Difficulty: ${difficulty} (1-10)
-
 Create fun, varied, and engaging trivia questions.
 
 STRICT RULES:
@@ -36,6 +32,12 @@ DIFFICULTY:
 AVOID:
 - Obvious repeated quiz questions
 - Overused trivia templates
+
+OUTPUT RULES:
+Return ONLY a JSON object.
+You must respond in JSON format.
+No text before or after.
+
 {
   "question": "...",
   "options": ["...", "...", "...", "..."],
