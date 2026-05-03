@@ -11,6 +11,7 @@ Generate a trivia question.
 Difficulty: ${difficulty} (1-10)
 
 Create fun, varied, and engaging trivia questions.
+Each question must be original.
 
 STRICT RULES:
 - Max 15 words
