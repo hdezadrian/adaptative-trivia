@@ -30,6 +30,7 @@ DIFFICULTY:
 AVOID:
 - Obvious repeated quiz questions
 - Overused trivia templates
+- Questions about planets
 
 OUTPUT RULES:
 Return ONLY a JSON object.
