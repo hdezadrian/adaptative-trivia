@@ -35,11 +35,13 @@ Return ONLY valid JSON:
     input: prompt
   });
 
-  const text = response.output[0].content[0].text;
+  const text =
+  response.output_text ||
+  response.output?.[0]?.content?.[0]?.text;
 
   try {
     return JSON.parse(text);
-  } catch {
+  } catch (e) {
     return {
       question: "Fallback question",
       options: ["A", "B", "C", "D"],
