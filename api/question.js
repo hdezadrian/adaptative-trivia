@@ -22,6 +22,10 @@ Rules:
 - options must be short (1-3 words)
 - only one correct answer
 - no explanations
+- Avoid repeating common questions
+- Mix topics: science, history, sports, tech, pop culture, nature, art
+- Must NOT be a famous repeated question
+- Must feel original and unexpected
 
 Difficulty guide:
 1-3 easy general knowledge
